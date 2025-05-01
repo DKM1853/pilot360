@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Apply blue background to the 1st, 4th, and 5th containers on desktop */
+@media (min-width: 1024px) {
+  .faq-container:nth-child(1),
+  .faq-container:nth-child(4),
+  .faq-container:nth-child(5) {
+    background-color: #2353ab;
+    color: white;
+  }
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.custom-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-scroll {
+  animation: scroll 20s linear infinite;
+  display: inline-flex;
+  white-space: nowrap;
+}
+.type-rating-section {
+  background-image: url("./assets/bg-image-whyus-1.png"); /* Mobile Image */
+}
+
+@media (min-width: 768px) {
+  .type-rating-section {
+    background-image: url("./assets/bg-image-whyus.png"); /* Desktop Image */
+    background-size: cover;
+    background-position: center;
+  }
+}
