@@ -30,7 +30,7 @@ const ContactUs = () => {
 
     try {
       const response = await fetch(
-        "https://auth.thepilotprep.com/reviews/business/cdihbchudv/submit",
+        "https://auth.thepilotprep.com/reviews/business/cdihbchudv/pilotprep/submit",
         {
           method: "POST",
           headers: {

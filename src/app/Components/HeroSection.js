@@ -10,44 +10,10 @@ const HeroSection = () => {
     <section className="mt-4 w-full h-auto">
       <div className="text-center px-4 md:px-8 lg:px-12">
         <div className="flex flex-col items-center justify-center">
-          {/* <div className="flex justify-center items-center ml-[-3%]">
-            <Image
-              // onClick={() => router.push("/")}
-              src={logo}
-              alt="Pilot 360 Logo"
-              className="w-[200px] h-[100px] object-contain cursor-pointer"
-            />
-          </div> */}
-          {/* <div className="relative -left-4 inline-block">
-            <svg
-              width="33"
-              height="33"
-              viewBox="0 0 33 33"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              className="absolute -top-6 -left-6"
-            >
-              <path
-                d="M30.2549 20C30.2549 17 27.2549 11 30.2549 2M22.7549 23.5C18.4215 19.3333 9.55488 9.2 8.75488 2M19.7549 30.5C17.0882 30.5 9.95488 29.1 2.75488 23.5"
-                stroke="#8FADD6"
-                strokeWidth="4"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-
-            <p className="text-[#171717] text-[20px] border border-[#171717] px-6 py-2 rounded-full">
-              Hello!
-            </p>
-          </div> */}
+         
         </div>
         <div className="relative">
-          {/* Content */}
-          {/* <h1 className="text-3xl md:text-[65px] lg:text-[85px] font-bold mt-2 leading-snug">
-            Get a <span className="text-[#801B2B]">Pilot License</span> to,
-            <br />
-            Start Your Career
-          </h1> */}
+         
           <h1 className="text-3xl md:text-[65px] lg:text-[65px] font-bold mt-2 leading-snug text-[#171717]">
             Become an <span className="text-[#801B2B]">Airline Pilot</span>
             <br />
@@ -98,12 +64,7 @@ const HeroSection = () => {
             🏅 DGCA Approved with 17+ Years of Experience. 🤝 Complete
             Assistance from Start to Finish.
           </p>
-          {/* <Image
-            // onClick={() => router.push("/")}
-            src={logo}
-            alt="Pilot 360 Logo"
-            className="w-[240px] h-[120px] object-contain cursor-pointer text-start mt-[45%] ml-6 lg:text-left"
-          /> */}
+        
         </div>
 
         {/* Center Image */}
@@ -133,8 +94,7 @@ const HeroSection = () => {
               🌍 Global Training Locations with Accomodations.🎓 100% Finance,
               Placement & Scholarship Support
             </p>
-            {/* Experience */}
-            {/* <p className="text-gray-500">Experience</p> */}
+          
           </div>
         </div>
         {/* Description and Stars (Mobile and Tablet Only) */}
@@ -169,19 +129,6 @@ const HeroSection = () => {
               🎓 100% Finance, Placement & Scholarship Support
             </li>
           </ul>
-
-          {/* <p className="text-gray-600 leading-relaxed">
-            DGCA Approved with 17+ Years of Experience.
-          </p>
-          <p className="text-gray-600 leading-relaxed">
-            Complete Assistance from Start to Finish.
-          </p>
-          <p className="text-gray-600 leading-relaxed">
-            Global Training Locations with accomodations.
-          </p>
-          <p className="text-gray-600 leading-relaxed">
-            100% Finance, Placement & Scholarship Support
-          </p> */}
         </div>
       </div>
 

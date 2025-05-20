@@ -1,7 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import bgImage from "./assets/herosection-bg.png"; // Ensure this path is correct.
-import Navbar from "./Components/Navbar";
+import { FaWhatsapp } from "react-icons/fa";
 import Footer from "./Components/footer";
 
 const geistSans = Geist({
@@ -74,6 +73,20 @@ export default function RootLayout({ children }) {
         </noscript>
         {/* <Navbar /> */}
         <main>{children}</main> {/* Dynamic content based on route */}
+        {/* WhatsApp Floating Button */}
+        {/* WhatsApp Floating Button */}
+        <div className="fixed bottom-6 right-6 z-50">
+          <span className="absolute inset-0 rounded-full bg-green-400 opacity-75 animate-ripple"></span>
+          <a
+            href="https://wa.me/918490008834"
+            className="relative bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg transition-all duration-300 flex items-center justify-center"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Contact us on WhatsApp"
+          >
+            <FaWhatsapp className="text-2xl md:text-3xl z-10" />
+          </a>
+        </div>
         <Footer />
       </body>
     </html>

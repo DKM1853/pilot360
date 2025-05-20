@@ -1,5 +1,4 @@
 import Image from "next/image";
-import p1 from "../assets/testimonial-photo.png";
 import bgImage from "../assets/bg-2.jpeg";
 
 const testimonials = [
@@ -10,7 +9,7 @@ const testimonials = [
     rating: 5.0,
     content:
       "Capt. Parth Panchal's training made complex aviation concepts feel easy. His structured approach boosted my confidence!",
-    profilePic: p1,
+    // profilePic: p1,
   },
   {
     id: 2,
@@ -19,7 +18,7 @@ const testimonials = [
     rating: 5.0,
     content:
       "Training under Capt. Parth was an absolute game-changer! His attention to detail and passion for teaching helped me excel in my pilot journey.",
-    profilePic: p1,
+    // profilePic: p1,
   },
   {
     id: 3,
@@ -28,7 +27,7 @@ const testimonials = [
     rating: 5.0,
     content:
       "Capt. Parth simplifies difficult topics, making learning fun and engaging. Thanks to him, I now feel completely prepared for my CPL exams!",
-    profilePic: p1,
+    // profilePic: p1,
   },
   {
     id: 4,
@@ -37,7 +36,7 @@ const testimonials = [
     rating: 5,
     content:
       "I struggled with navigation, but Capt. Parth's methodical approach helped me master it with ease. Highly recommend Pilot 360!",
-    profilePic: p1,
+    // profilePic: p1,
   },
   {
     id: 5,
@@ -46,7 +45,7 @@ const testimonials = [
     rating: 5,
     content:
       "Flying with Capt. Parth was a transformative experience! His deep knowledge and ability to relate theory to real-life flying made all the difference.",
-    profilePic: p1,
+    // profilePic: p1,
   },
 ];
 // const getRandomColor = () => {
