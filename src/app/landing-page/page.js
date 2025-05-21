@@ -364,8 +364,31 @@ export default function AdsPage() {
   };
 
   const handleSubmit = async () => {
-    setIsSubmitting(true);
     setStatusMessage("");
+
+    // Trim and validate fields
+    const { name, number, email } = formData;
+
+    if (!name.trim() || !number.trim() || !email.trim()) {
+      setStatusMessage("Please fill in all required fields.");
+      return;
+    }
+
+    // Simple email regex
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setStatusMessage("Please enter a valid email address.");
+      return;
+    }
+
+    // Indian phone number regex (10 digits starting with 6-9)
+    const phoneRegex = /^[6-9]\d{9}$/;
+    if (!phoneRegex.test(number)) {
+      setStatusMessage("Please enter a valid 10-digit Indian phone number.");
+      return;
+    }
+
+    setIsSubmitting(true);
 
     try {
       const response = await fetch(
@@ -380,7 +403,7 @@ export default function AdsPage() {
       );
 
       if (response.ok) {
-        router.push("/thank-you"); // 🔁 Redirect here
+        router.push("/thank-you");
       } else {
         setStatusMessage("Failed to submit the form. Please try again.");
       }
@@ -921,7 +944,7 @@ export default function AdsPage() {
       </section>{" "}
       {/* <TrainingLocation /> */}
       <div
-        className="relative min-h-[125vh] md:min-h-[130vh] lg:min-h-[135vh] mb-[10px] bg-white"
+        className="relative min-h-[135vh] md:min-h-[130vh] lg:min-h-[135vh] mb-[10px] bg-white flex flex-col" // 🔧 Added flex + flex-col
         style={{
           backgroundImage: `url(${bgimage.src})`,
           backgroundSize: "cover",
@@ -929,10 +952,10 @@ export default function AdsPage() {
         }}
       >
         <div className="text-center py-8">
-          <h2 className="text-[27px] md:text-[50px] lg:text-[50px] font-bold text-black">
+          <h2 className="text-[25px] md:text-[40px] lg:text-[50px] font-bold text-black">
             Why Pilot 360 Is the Top Choice for
           </h2>
-          <h2 className="text-[30px] md:text-[50px] lg:text-[50px] font-bold text-[#801B2B]">
+          <h2 className="text-[30px] md:text-[40px] lg:text-[50px] font-bold text-[#801B2B]">
             Flying Training
           </h2>
         </div>
@@ -1063,15 +1086,24 @@ export default function AdsPage() {
             })}
           </div>
         </div>
+        {/* 🔧 Moved this inside, added mt-auto to push to bottom */}
+        <div className="flex justify-center py-4 mt-auto">
+          <a
+            href="#contact"
+            className="bg-blue-600 text-white px-8 py-3 rounded-full hover:bg-blue-700 transition-all duration-300"
+          >
+            Join Us Now!
+          </a>
+        </div>
       </div>
-      <div className="flex justify-center py-4 bg-[#FFBFBF] mt-[-10px]">
+      {/* <div className="flex justify-center py-4 bg-[#FFBFBF] mt-[-10px]">
         <a
           href="#contact"
           className="bg-blue-600 text-white px-8 py-3 rounded-full hover:bg-blue-700 transition-all duration-300"
         >
           Join Us Now!
         </a>
-      </div>
+      </div> */}
       <div
         className="w-full md:w-[98%] bg-[#181818] py-12 px-4 mx-auto rounded-[20px] mt-12"
         id="services"

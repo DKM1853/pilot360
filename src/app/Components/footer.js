@@ -4,27 +4,54 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import logo from "../assets/gray-logo.png";
+import { FaWhatsapp } from "react-icons/fa"; // if using react-icons
 
 export default function Footer() {
   const currentRoute = usePathname(); // Get current route
 
+  // Detect variant based on route (e.g., landing page contains '/landing')
+  const isLandingPage = currentRoute.includes("/landing");
   // Navbar links
-  const navLinks = [
-    { name: "Home", url: "/" },
-    { name: "How To Become a Pilot", url: "/How-to-become-pilot" },
-    { name: "Contact us", url: "/Contact-us" },
-    { name: "Privacy Policy", url: "/Privacy-policy" },
-    // { name: "Blog", url: "/blog" },
+  const navLinks1 = [
+    { name: "Home", href: "/" },
+    { name: "How To Become a Pilot", href: "/How-to-become-pilot" },
+    { name: "Contact us", href: "/Contact-us" },
+    { name: "Privacy Policy", href: "/Privacy-policy" },
+    // { name: "Blog", href: "/blog" },
   ];
-  const LocationLinks = [
-    { name: "USA", url: "/Pilot-Training-in-USA" },
-    { name: "India", url: "/Pilot-Training-in-India" },
-    { name: "Europe", url: "/Pilot-Training-in-Europe" },
-    { name: "Canada", url: "/Pilot-Training-in-Canada" },
-    { name: "Australia", url: "/Pilot-Training-in-Australia" },
-    { name: "New Zeland", url: "/Pilot-Training-in-NZ" },
-    { name: "South Africa", url: "/Pilot-Training-in-South-Africa" },
+
+  const locationLinks1 = [
+    { name: "USA", href: "/Pilot-Training-in-USA" },
+    { name: "India", href: "/Pilot-Training-in-India" },
+    { name: "Europe", href: "/Pilot-Training-in-Europe" },
+    { name: "Canada", href: "/Pilot-Training-in-Canada" },
+    { name: "Australia", href: "/Pilot-Training-in-Australia" },
+    { name: "New Zealand", href: "/Pilot-Training-in-NZ" },
+    { name: "South Africa", href: "/Pilot-Training-in-South-Africa" },
   ];
+
+  const navLinks2 = [
+    { name: "About us", href: "#contact" },
+    { name: "Our Service", href: "#services" },
+    { name: "Our Graduates", href: "#graduates" },
+    { name: "Ground School", href: "#ground-school" },
+    { name: "FAQ's", href: "#faq" },
+    { name: "Contact us", href: "#contact" },
+    { name: "Privacy Policy", href: "/Privacy-policy" },
+  ];
+
+  const locationLinks2 = [
+    { name: "USA", href: "#" },
+    { name: "India", href: "#" },
+    { name: "Europe", href: "#" },
+    { name: "Canada", href: "#" },
+    { name: "Australia", href: "#" },
+    { name: "New Zealand", href: "#" },
+    { name: "South Africa", href: "#" },
+  ];
+
+  const navLinks = isLandingPage ? navLinks2 : navLinks1;
+  const LocationLinks = isLandingPage ? locationLinks2 : locationLinks1;
   return (
     <footer className="bg-[#272727] text-white px-8 py-12 text-center">
       <div className="container mx-auto">
@@ -54,10 +81,13 @@ export default function Footer() {
               Site Links
             </h3>
             <ul className="space-y-2 text-left">
-              {navLinks.map(({ name, url }) => (
-                <li key={name}>
-                  <Link href={url} className={`text-sm hover:text-[#DC143B]`}>
-                    {name}
+              {navLinks.map((link) => (
+                <li key={link.name}>
+                  <Link
+                    href={link.href}
+                    className={`text-sm hover:text-[#DC143B]`}
+                  >
+                    {link.name}
                   </Link>
                 </li>
               ))}
@@ -70,10 +100,13 @@ export default function Footer() {
               Training Locations
             </h3>
             <ul className="space-y-2 text-left">
-              {LocationLinks.map(({ name, url }) => (
-                <li key={name}>
-                  <Link href={url} className={`text-sm hover:text-[#DC143B]`}>
-                    {name}
+              {LocationLinks.map((link) => (
+                <li key={link.name}>
+                  <Link
+                    href={link.href}
+                    className={`text-sm hover:text-[#DC143B]`}
+                  >
+                    {link.name}
                   </Link>
                 </li>
               ))}
@@ -86,7 +119,21 @@ export default function Footer() {
               Get in touch
             </h3>
             <div className="text-left">
-              <p>Phone: +91 8490008834</p>
+              <div className="mt-4">
+                {isLandingPage ? (
+                  <a
+                    href="https://wa.me/918490008834?text=Hello%2C%20I%20am%20interested%20in%20pilot%20training"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-green-500 font-medium hover:underline"
+                  >
+                    <FaWhatsapp className="text-xl" />
+                    WhatsApp: Connect Now
+                  </a>
+                ) : (
+                  <p>Phone: +91 8490008834</p>
+                )}
+              </div>
               <p>Email: connect@pilot360.co</p>
             </div>
             <div>
@@ -227,7 +274,7 @@ export default function Footer() {
                   </defs>
                 </svg>
               </Link>
-              <Link href="#" className="hover:text-gray-300">
+              {/* <Link href="#" className="hover:text-gray-300">
                 <svg
                   width="70"
                   height="70"
@@ -346,7 +393,7 @@ export default function Footer() {
                     </filter>
                   </defs>
                 </svg>
-              </Link>
+              </Link> */}
             </div>
           </div>
         </div>
