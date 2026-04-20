@@ -438,6 +438,12 @@ const Navbar = () => {
           >
             How To Become a Pilot
           </li>
+          <li
+            onClick={() => window.open("https://claude.ai/public/artifacts/329816fd-bb36-4092-8b26-f43851ca931a", "_blank")}
+            className="cursor-pointer text-[18px] p-4 rounded-[60px] hover:bg-[#2353AB] hover:text-white"
+          >
+            Cost Calculator
+          </li>
         </ul>
 
         {/* Mobile Sidebar Navigation */}
@@ -825,6 +831,15 @@ const Navbar = () => {
                 } rounded-lg hover:bg-[#2353AB] hover:text-white`}
               >
                 How To Become a Pilot
+              </li>
+              <li
+                onClick={() => {
+                  setIsMenuOpen(false);
+                  window.open("https://claude.ai/public/artifacts/329816fd-bb36-4092-8b26-f43851ca931a", "_blank");
+                }}
+                className="cursor-pointer p-4 text-[15px] text-black rounded-lg hover:bg-[#2353AB] hover:text-white"
+              >
+                Cost Calculator
               </li>
             </ul>
           </div>

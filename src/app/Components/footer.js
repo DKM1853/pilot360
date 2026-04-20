@@ -1,13 +1,10 @@
 "use client"; // Mark this file as a client component
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import Image from "next/image";
 import logo from "../assets/gray-logo.png";
 
 export default function Footer() {
-  const currentRoute = usePathname(); // Get current route
-
   // Navbar links
   const navLinks = [
     { name: "Home", url: "/" },
@@ -25,14 +22,29 @@ export default function Footer() {
     { name: "New Zeland", url: "/Pilot-Training-in-NZ" },
     { name: "South Africa", url: "/Pilot-Training-in-South-Africa" },
   ];
+  const contactDetails = [
+    { label: "Delhi Office", value: "+91 9217663195" },
+    { label: "Ahmedabad Office", value: "+91 7600534858" },
+  ];
+
+  const officeAddresses = [
+    {
+      title: "Delhi Office",
+      address: "D416 Ramphal Chowk, Dwarka Sector 7, New Delhi - 110077",
+    },
+    {
+      title: "Ahmedabad Office",
+      address: "Shreeya Amalga 405, Above Chroma, off Sindhubhavan Road, Thaltej, Ahmedabad, Gujarat - 380059",
+    },
+  ];
   return (
-    <footer className="bg-[#272727] text-white px-8 py-12 text-center">
+    <footer className="bg-[#272727] px-8 py-12 text-left text-white">
       <div className="container mx-auto">
         {/* Footer Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 gap-8">
           {/* Logo and Description */}
-          <div className="col-span-1 sm:col-span-2 md:col-span-3 space-y-4">
-            <div className="flex items-center justify-center space-x-2">
+          <div className="col-span-1 space-y-4 sm:col-span-2 md:col-span-3">
+            <div className="flex items-center justify-start space-x-2">
               <Link href="/" className={`text-sm hover:text-[#DC143B]`}>
                 <Image
                   src={logo}
@@ -85,21 +97,56 @@ export default function Footer() {
             <h3 className="text-lg font-semibold text-left text-[#DC143B]">
               Get in touch
             </h3>
-            <div className="text-left">
-              <p>Phone: +91 8490008834</p>
-              <p>Email: connect@pilot360.co</p>
+            <div className="space-y-3 text-left text-sm text-gray-300">
+              <div className="space-y-2">
+                <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#DC143B]">
+                  Phone
+                </p>
+                <div className="space-y-2">
+                  {contactDetails.map(({ label, value }) => (
+                    <p
+                      key={label}
+                      className="flex flex-col gap-1 sm:flex-row sm:items-center sm:gap-2"
+                    >
+                      <span className="font-medium text-white">{label}:</span>
+                      <a href={`tel:${value}`} className="hover:text-[#DC143B]">
+                        {value}
+                      </a>
+                    </p>
+                  ))}
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#DC143B]">
+                  Email
+                </p>
+                <a
+                  href="mailto:connect@pilot360.co"
+                  className="break-all hover:text-[#DC143B]"
+                >
+                  connect@pilot360.co
+                </a>
+              </div>
             </div>
+
             <div>
               <h3 className="text-lg font-semibold text-left mb-4 text-[#DC143B]">
                 Address
               </h3>
-              <address className="text-sm not-italic text-gray-300 space-y-2 text-left">
-                <p>SF 202 Dynasty Corporate Park, Nr. Stadium Circle</p>
-                <p>Chimanlal Girdharlal Rd, Navrangpura, Ahmedabad</p>
-                <p>Gujarat 380009</p>
-              </address>
+              <div className="space-y-3">
+                {officeAddresses.map(({ title, address }) => (
+                  <address
+                    key={title}
+                    className="text-sm not-italic text-gray-300"
+                  >
+                    <p className="mb-2 font-semibold text-white">{title}</p>
+                    <p className="leading-6">{address}</p>
+                  </address>
+                ))}
+              </div>
             </div>
-            <div className="grid grid-cols-4 md:grid-cols-3 xl:grid-cols-4 text-left">
+            <div className="grid grid-cols-2 gap-2 text-left sm:grid-cols-4 md:grid-cols-3 xl:grid-cols-4">
               <Link
                 href="https://www.instagram.com/pilot360.official/"
                 className="hover:text-gray-300"
@@ -352,7 +399,7 @@ export default function Footer() {
         </div>
 
         {/* Copyright */}
-        <div className="mt-12 pt-8 border-t border-gray-600 text-center">
+        <div className="mt-12 border-t border-gray-600 pt-8 text-left">
           <p className="text-sm text-gray-300">
             Copyright © 2025 Pilot 360. All Rights Reserved
           </p>
