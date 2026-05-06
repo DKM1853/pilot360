@@ -439,7 +439,7 @@ const Navbar = () => {
             How To Become a Pilot
           </li>
           <li
-            onClick={() => window.open("https://claude.ai/public/artifacts/329816fd-bb36-4092-8b26-f43851ca931a", "_blank")}
+            onClick={() => router.push("/cost-calculator")}
             className="cursor-pointer text-[18px] p-4 rounded-[60px] hover:bg-[#2353AB] hover:text-white"
           >
             Cost Calculator
@@ -835,7 +835,7 @@ const Navbar = () => {
               <li
                 onClick={() => {
                   setIsMenuOpen(false);
-                  window.open("https://claude.ai/public/artifacts/329816fd-bb36-4092-8b26-f43851ca931a", "_blank");
+                  router.push("/cost-calculator");
                 }}
                 className="cursor-pointer p-4 text-[15px] text-black rounded-lg hover:bg-[#2353AB] hover:text-white"
               >

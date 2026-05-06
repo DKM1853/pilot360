@@ -1,58 +1,43 @@
 /** @jsxImportSource react */
 "use client";
 
+import { useEffect } from "react";
 import Image from "next/image";
-import { useState } from "react";
+import Script from "next/script";
+import { useRouter } from "next/navigation";
 import pilot from "../assets/contact-pilot.png";
 
 const ContactUs = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    number: "",
-    // degree: "",
-    message: "",
-  });
-  const [statusMessage, setStatusMessage] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const router = useRouter();
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
+  useEffect(() => {
+    const handleFormSubmitMessage = (event) => {
+      const allowedOrigins = [
+        "https://api.leadconnectorhq.com",
+        "https://link.msgsndr.com",
+      ];
 
-  const handleSubmit = async () => {
-    setIsSubmitting(true);
-    setStatusMessage("");
-
-    try {
-      const response = await fetch(
-        "https://auth.thepilotprep.com/reviews/business/cdihbchudv/submit",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
-        }
-      );
-
-      if (response.ok) {
-        setStatusMessage(
-          "Form submitted successfully. Admin has been notified."
-        );
-      } else {
-        setStatusMessage("Failed to submit the form. Please try again.");
+      if (!allowedOrigins.includes(event.origin) || !Array.isArray(event.data)) {
+        return;
       }
-    } catch (error) {
-      setStatusMessage("An error occurred. Please try again later.");
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
+
+      const inputJSON = event.data[2];
+      const hasSubmittedContact =
+        typeof inputJSON === "string" &&
+        inputJSON.includes("customer_id") &&
+        inputJSON.includes("email");
+
+      if (hasSubmittedContact) {
+        router.push("/thank-you");
+      }
+    };
+
+    window.addEventListener("message", handleFormSubmitMessage);
+
+    return () => {
+      window.removeEventListener("message", handleFormSubmitMessage);
+    };
+  }, [router]);
 
   return (
     <div className="py-12 px-4 md:px-12 lg:px-20">
@@ -86,104 +71,35 @@ const ContactUs = () => {
             <div className="w-[150px] h-1 bg-[#DC143B] ml-4"></div>
           </div>
 
-          {/* Form */}
-          <form
-            style={{
-              fontFamily: "Nunito",
-            }}
-          >
-            <div className="grid grid-cols-1 gap-4">
-              <input
-                type="text"
-                name="name"
-                placeholder="Name"
-                value={formData.name}
-                onChange={handleInputChange}
-                className="w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-800 text-black"
-                required
-                style={{
-                  fontFamily: "Nunito",
-                  color: "black", // Ensure text color is black
-                }}
-              />
-              <input
-                type="text"
-                name="number"
-                placeholder="Phone"
-                value={formData.number}
-                onChange={handleInputChange}
-                className="w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-800 text-black"
-                required
-                style={{
-                  color: "black", // Ensure text color is black
-                }}
-              />
-              <input
-                type="email"
-                name="email"
-                placeholder="Email"
-                value={formData.email}
-                onChange={handleInputChange}
-                className="w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-800 text-black"
-                required
-                style={{
-                  color: "black", // Ensure text color is black
-                }}
-              />
-              {/* <select
-                name="degree"
-                value={formData.degree}
-                onChange={handleInputChange}
-                className="w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-800 bg-white text-black"
-                required
-                style={{
-                  color: "black", // Ensure text color is black
-                }}
-              >
-                <option value="" disabled>
-                  Select your qualification
-                </option>
-                <option value="MBBS">MBBS</option>
-                <option value="MD">MD</option>
-                <option value="MS">MS</option>
-                <option value="BDS">BDS</option>
-                <option value="MDS">MDS</option>
-              </select> */}
-
-              <textarea
-                name="message"
-                placeholder="Message"
-                rows="4"
-                value={formData.message}
-                onChange={handleInputChange}
-                className="w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-800 text-black"
-                required
-                style={{
-                  color: "black", // Ensure text color is black
-                }}
-              ></textarea>
-            </div>
-            <button
-              type="button"
-              onClick={handleSubmit}
-              disabled={isSubmitting}
-              className={`mt-6 w-full ${
-                isSubmitting ? "bg-blue-400" : "bg-blue-800"
-              } text-white py-3 rounded-md font-semibold hover:bg-blue-900 transition`}
+          {/* Embedded Form */}
+          <div className="w-full h-[454px]">
+            <iframe
+              src="https://api.leadconnectorhq.com/widget/form/ckzGXcuPbx2tpvYyn6yr"
               style={{
-                fontFamily: "Nunito",
+                width: "100%",
+                height: "100%",
+                border: "none",
+                borderRadius: "8px",
               }}
-            >
-              {isSubmitting ? "Submitting..." : "Submit Now"}
-            </button>
-          </form>
-
-          {/* Status Message */}
-          {statusMessage && (
-            <p className="mt-4 text-center text-lg font-medium text-[#004AAB]">
-              {statusMessage}
-            </p>
-          )}
+              id="inline-ckzGXcuPbx2tpvYyn6yr"
+              data-layout="{'id':'INLINE'}"
+              data-trigger-type="alwaysShow"
+              data-trigger-value=""
+              data-activation-type="alwaysActivated"
+              data-activation-value=""
+              data-deactivation-type="neverDeactivate"
+              data-deactivation-value=""
+              data-form-name="Reach Out to Us"
+              data-height="454"
+              data-layout-iframe-id="inline-ckzGXcuPbx2tpvYyn6yr"
+              data-form-id="ckzGXcuPbx2tpvYyn6yr"
+              title="Reach Out to Us"
+            />
+          </div>
+          <Script
+            src="https://link.msgsndr.com/js/form_embed.js"
+            strategy="afterInteractive"
+          />
         </div>
       </div>
     </div>
