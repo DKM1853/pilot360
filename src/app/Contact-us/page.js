@@ -31,7 +31,7 @@ export default function Contact() {
     >
       <Navbar />
       <ContactUs />
-      <div className="flex items-center mx-auto justify-center w-[90%] md:w-[80%] mb-4">
+      {/* <div className="flex items-center mx-auto justify-center w-[90%] md:w-[80%] mb-4">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3671.4859413809954!2d72.56708789999999!3d23.0426396!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e8555fddcb439%3A0x10d0b3c794916fb0!2sPilot%20360!5e0!3m2!1sen!2sin!4v1741462295907!5m2!1sen!2sin"
           width="100%"
@@ -41,7 +41,7 @@ export default function Contact() {
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
         />
-      </div>
+      </div> */}
     </div>
   );
 }

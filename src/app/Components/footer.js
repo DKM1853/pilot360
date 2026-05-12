@@ -38,7 +38,7 @@ export default function Footer() {
     },
   ];
   return (
-    <footer className="bg-[#272727] px-8 py-12 text-left text-white">
+    <footer className="bg-[#272727] px-8 py-12 text-left text-white fixed bottom-0 left-0 right-0 z-40 max-h-[65vh] overflow-y-auto lg:static lg:max-h-none lg:overflow-visible">
       <div className="container mx-auto">
         {/* Footer Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 gap-8">
@@ -401,7 +401,7 @@ export default function Footer() {
         {/* Copyright */}
         <div className="mt-12 border-t border-gray-600 pt-8 text-left">
           <p className="text-sm text-gray-300">
-            Copyright © 2025 Pilot 360. All Rights Reserved
+            Copyright © {new Date().getFullYear()} Pilot 360. All Rights Reserved
           </p>
         </div>
       </div>
